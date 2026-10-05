@@ -31,17 +31,18 @@ def update(request,id):
       name = request.POST['name']
       age = request.POST['age']
       address = request.POST['address']
-      contant = request.POST['contant']
+      contact = request.POST['contact']
       email = request.POST['email']
 
       data.name = name
       data.age = age 
       data.address = address
-      data.contant = contant
+      data.contact = contact
       data.email = email
       data.save()
       messages.success(request,"Update Successfully Completed")
       return redirect("Home")
+   return render(request,"update.html",{'data':data})
    
 def delete(request,id):
    data = RegisterForm.objects.get(id = id)
