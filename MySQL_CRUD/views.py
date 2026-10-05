@@ -24,5 +24,30 @@ def insert(request):
    else:
      form = MyRegisterForm
      return render(request,"register.html",{'form':form})
+
+def update(request,id):
+   data = RegisterForm.objects.get(id = id)
+   if(request.method == 'POST'):
+      name = request.POST['name']
+      age = request.POST['age']
+      address = request.POST['address']
+      contant = request.POST['contant']
+      email = request.POST['email']
+
+      data.name = name
+      data.age = age 
+      data.address = address
+      data.contant = contant
+      data.email = email
+      data.save()
+      messages.success(request,"Update Successfully Completed")
+      return redirect("Home")
+   
+def delete(request,id):
+   data = RegisterForm.objects.get(id = id)
+   data.delete()
+   messages.error(request,"Delete Successfully Completed")
+   return redirect("Home")
+   
         
    
