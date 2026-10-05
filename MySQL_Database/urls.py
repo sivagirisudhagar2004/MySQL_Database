@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from MySQL_CRUD import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.home,name="Home"),
+    path('insert/',views.insert,name="Insert"),
+    path('updata/<int:id>',views.update,name="Update"),
+    path('delete/int:id',views.delete,name="Delete")
 ]
